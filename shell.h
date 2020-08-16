@@ -14,7 +14,9 @@ extern char **environ;
 
 char *_getenv(char *name);
 int _strcmp(char *s1, char *s2);
-unsigned int _strlen(const char *s);
 char *_strcpy(char *dest, char *src);
+void prompt(void);
+int _strlen(char *s);
+void signal_handler(int signal __attribute__((unused)));
 
 #endif /* SHELL_H */
