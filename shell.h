@@ -12,4 +12,9 @@
 
 extern char **environ;
 
+char *_getenv(char *name);
+int _strcmp(char *s1, char *s2);
+unsigned int _strlen(const char *s);
+char *_strcpy(char *dest, char *src);
+
 #endif /* SHELL_H */
