@@ -7,7 +7,7 @@
 
 char *_getenv(char *name)
 {
-	char **env, *value = NULL, *pathname = NULL;
+	char **env, *value = NULL, *pathname = "PATH";
 	int i;
 
 	env = environ;
