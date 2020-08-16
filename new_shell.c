@@ -32,16 +32,16 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)),
 		}
 		user_command[i] = NULL;
 		pathValue = _getenv("PATH");/*busca el valor de la var env PATH*/
-		allValuesPath = get_path(pathValue);/*todos los valor del PATH*/
+		allValuesPath = get_path(pathValue);/*todos los valores del PATH*/
 
 		while (allValuesPath[value] != NULL )
 		{
 			getcommand = strcat(allValuesPath[value], user_command[0]);
-			/*if(stat(getcommand,&st) == 0)
+			if(stat(getcommand,&st) == 0)
 			{
 				free(allValuesPath);
 				break;
-			}*/
+			}
 			free(getcommand);
 			value++;
 		}
