@@ -8,7 +8,7 @@
  * Return: Always Success 0
  */
 
-int main(int argc, char *argv[], char *envp[])
+int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)), char *envp[])
 {
 	pid_t child;
 	char *user_command[10], *token, *lineptr = NULL;
@@ -17,7 +17,7 @@ int main(int argc, char *argv[], char *envp[])
 
 	while (1)
 	{
-		printf("$ ");
+		printf("#cisfun$ ");
 		if (getline(&lineptr, &n, stdin) == -1)
 			break;
 		token = strtok(lineptr, " \t\n\r");
@@ -32,7 +32,7 @@ int main(int argc, char *argv[], char *envp[])
 		{
 			if (execve(user_command[0], user_command, envp))
 			{
-				perror("execve");
+				perror("./simple_shell");
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -41,4 +41,5 @@ int main(int argc, char *argv[], char *envp[])
 	}
 	putchar('\n');
 	free(lineptr);
+	exit(status);
 }
