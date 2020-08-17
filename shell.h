@@ -16,6 +16,6 @@ char *_getenv(char *name);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
-char **get_path(char *path);
+char **_get_path(char *path);
 
 #endif /* SHELL_H */

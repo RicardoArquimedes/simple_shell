@@ -4,16 +4,19 @@
  * @path: absolute and relative of directories
  * Return:  a pointer to strings.
  */
-char **get_path(char *path)
+char **_get_path(char *path)
 {
 	int index = 0, size = 100;
 	char *symbol = ":";
 	char **path_absol = malloc(size);
 	char *path_rela;
+	char *copyPath = malloc(_strlen(path));
+	
+	copyPath = strcpy(copyPath, path);
 
 	if (path_absol == NULL)
 		exit(EXIT_FAILURE);
-	path_rela = strtok(path, symbol);
+	path_rela = strtok(copyPath, symbol);
 	while (path_rela)
 	{
 		path_absol[index] = path_rela;
