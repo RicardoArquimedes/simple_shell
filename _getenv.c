@@ -7,18 +7,19 @@
 
 char *_getenv(char *name)
 {
-	char **env, *value = NULL, *pathname = NULL;
-	int i;
+	char *value = NULL, *pathname = "PATH";
+	int len = 4;
+	char **env;
 
 	env = environ;
-	for (i = 0; env[i]; i++)
+	while (*env != NULL)
 	{
-		pathname = strtok(env[i], "=");
-		if (_strcmp(name, pathname) == 0)
+		if (strncmp(*env, pathname, len) == 0)
 		{
-			value = strtok(NULL, env[i]);
+			value = (*env) + (len + 1);
 			break;
 		}
+		env++;
 	}
 	return (value);
 }
