@@ -21,5 +21,6 @@ char *_getenv(char *name)
 		}
 		env++;
 	}
+	printf("el env es: %s\n", value);
 	return (value);
 }
