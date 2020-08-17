@@ -17,5 +17,7 @@ int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 char **_get_path(char *path);
+char *_get_command(char **allValuesPath, char *user_command);
+char **_get_token(char *lineptr);
 
 #endif /* SHELL_H */
