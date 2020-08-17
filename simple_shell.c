@@ -12,59 +12,34 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)),
 {
 	struct stat st;
 	pid_t child;
-	char *user_command[10], *token, *lineptr = NULL;
+	char *token, *lineptr = NULL;
 	size_t i, n;
-	int status, value = 0;
-	char *pathValue;
-	char *getcommand = NULL;
-	char **allValuesPath;
-	int y = 0, len = 0;
+	int status;
+	char *pathValue, *getcommand;
+	char **allValuesPath, **user_command;
+	int y = 0;
 	//signal(SIGINT, signal_handler);
 
-	pathValue = _getenv("PATH"); /*busca el valor de la var env PATH*/
+	pathValue = _getenv("PATH");	      /*busca el valor de la var env PATH*/
+	allValuesPath = _get_path(pathValue); /*todos los valores del PATH*/
 
 	while (1)
 	{
-		getcommand = "";
-
-		allValuesPath = get_path(pathValue); /*todos los valores del PATH*/
-
+		printf(" %s\n", "INICIO");
 		write(STDOUT_FILENO, "#cisfun$ ", 10);
 
 		if (getline(&lineptr, &n, stdin) == -1)
 			break;
-		token = strtok(lineptr, " \t\n\r");
-		for (i = 0; i < 10 && token != NULL; i++)
-		{
-			user_command[i] = token;
-			token = strtok(NULL, " \t\n\r");
-		}
-		user_command[i] = NULL;
-
+		user_command = _get_token(lineptr);
 		if (stat(user_command[0], &st) == 0)
+		{
+			printf("%s\n", "aca si");
 			getcommand = user_command[0];
+		}
 		else
 		{
-			while (allValuesPath[value] != NULL)
-			{
-				len = strlen(allValuesPath[value]);
-
-				if (allValuesPath[value][len - 1] != 47)
-				{
-					allValuesPath[value] = strcat(allValuesPath[value], "/");
-				}
-
-				getcommand = strcat(allValuesPath[value], user_command[0]);
-				if (stat(getcommand, &st) == 0)
-				{
-					printf("el final command es %s\n", getcommand);
-					free(allValuesPath);
-					break;
-				}
-				//free(getcommand);
-				value++;
-				getcommand = NULL;
-			}
+			printf("%s\n", "aca else");
+			getcommand = _get_command(allValuesPath, user_command[0]);
 			if (getcommand == NULL)
 			{
 				perror("Command not found"); /*liberar memoria pendiente de revisar*/
@@ -83,6 +58,7 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)),
 		else
 			wait(&status);
 	}
+	free(allValuesPath);
 	putchar('\n');
 	free(lineptr);
 	exit(status);
