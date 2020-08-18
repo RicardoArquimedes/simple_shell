@@ -24,5 +24,6 @@ char **_get_path(char *path)
 		path_rela = strtok(NULL, symbol);
 	}
 	path_absol[index] = NULL;
+	free(copyPath);
 	return (path_absol);
 }
