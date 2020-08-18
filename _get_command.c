@@ -3,6 +3,7 @@
  * _get_command - get path
  * @allValuesPath: value paths
  * @user_command: comman user
+ * Return: To a pointers
  */
 
 char *_get_command(char **allValuesPath, char *user_command)
@@ -30,13 +31,10 @@ char *_get_command(char **allValuesPath, char *user_command)
 		{
 			copyAllvaluesPath[value] = strcat(copyAllvaluesPath[value], "/");
 		}
-		printf("el path es: %s\n", copyAllvaluesPath[value]);
 
 		getcommand = strcat(copyAllvaluesPath[value], user_command);
 		if (stat(getcommand, &st) == 0)
 		{
-			printf(" %s\n", "llegue4");
-			printf("el final command es %s\n", getcommand);
 			free(copyAllvaluesPath);
 			return (getcommand);
 		}

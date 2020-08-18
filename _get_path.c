@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * get_path - separate the path in new strings.
+ * _get_path - separate the path in new strings.
  * @path: absolute and relative of directories
  * Return:  a pointer to strings.
  */
@@ -11,7 +11,7 @@ char **_get_path(char *path)
 	char **path_absol = malloc(size);
 	char *path_rela;
 	char *copyPath = malloc(_strlen(path));
-	
+
 	copyPath = strcpy(copyPath, path);
 
 	if (path_absol == NULL)

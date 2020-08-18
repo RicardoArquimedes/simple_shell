@@ -2,7 +2,7 @@
 /**
  * _get_token - get token of string
  * @lineptr: comman user
- * Return : pointer
+ * Return: To a pointer
  */
 
 char **_get_token(char *lineptr)
