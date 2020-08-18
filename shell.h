@@ -11,6 +11,7 @@
 #include <sys/errno.h>
 
 extern char **environ;
+extern char *program_invocation_name;
 
 char *_getenv(char *name);
 int _strcmp(char *s1, char *s2);
@@ -22,5 +23,8 @@ char **_get_token(char *lineptr);
 int _putchar(char c);
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcat(char *dest, char *src);
+void exit_command(char **args);
+int _atoi(char *s);
+
 
 #endif /* SHELL_H */
