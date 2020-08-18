@@ -21,7 +21,7 @@ char *argv[] __attribute__((unused)), char *envp[])
 	while (1)
 	{
 		write(STDOUT_FILENO, "#cisfun$ ", 10);
-		if (getline(&lineptr, &n, stdin) == -1)
+		if (getline(&lineptr, &n, stdin) == EOF)
 			break;
 		user_command = _get_token(lineptr);
 		if (stat(user_command[0], &st) == 0)

@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * _get_command - get path
+ * _get_command - get coomand of user.
  * @allValuesPath: value paths
  * @user_command: comman user
  * Return: To a pointers
@@ -19,7 +19,7 @@ char *_get_command(char **allValuesPath, char *user_command)
 		char *pathValue = allValuesPath[value];
 
 		copyAllvaluesPath[value] = malloc((sizeof(char *) * 100));
-		copyAllvaluesPath[value] = strcpy(copyAllvaluesPath[value], pathValue);
+		copyAllvaluesPath[value] = _strcpy(copyAllvaluesPath[value], pathValue);
 		value++;
 	}
 	value = 0;
@@ -29,10 +29,10 @@ char *_get_command(char **allValuesPath, char *user_command)
 
 		if (allValuesPath[value][len - 1] != 47)
 		{
-			copyAllvaluesPath[value] = strcat(copyAllvaluesPath[value], "/");
+			copyAllvaluesPath[value] = _strcat(copyAllvaluesPath[value], "/");
 		}
 
-		getcommand = strcat(copyAllvaluesPath[value], user_command);
+		getcommand = _strcat(copyAllvaluesPath[value], user_command);
 		if (stat(getcommand, &st) == 0)
 		{
 			free(copyAllvaluesPath);
