@@ -10,9 +10,11 @@ char *_get_command(char **allValuesPath, char *user_command)
 {
 	struct stat st;
 	int value = 0, len = 0;
+	char *getcommand = NULL;
+	char **copyAllvaluesPath = NULL;
 
-	char *getcommand = malloc(200);
-	char **copyAllvaluesPath = malloc(100);
+	getcommand = malloc(200);
+	copyAllvaluesPath = malloc(100);
 
 	while (allValuesPath[value] != NULL)
 	{
@@ -29,10 +31,10 @@ char *_get_command(char **allValuesPath, char *user_command)
 
 		if (allValuesPath[value][len - 1] != 47)
 		{
-			copyAllvaluesPath[value] = _strcat(copyAllvaluesPath[value], "/");
+			copyAllvaluesPath[value] = strcat(copyAllvaluesPath[value], "/");
 		}
 
-		getcommand = _strcat(copyAllvaluesPath[value], user_command);
+		getcommand = strcat(copyAllvaluesPath[value], user_command);
 		if (stat(getcommand, &st) == 0)
 		{
 			free(copyAllvaluesPath);
