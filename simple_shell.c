@@ -11,12 +11,12 @@ char *argv[] __attribute__((unused)), char *envp[])
 {
 	struct stat st;
 	pid_t child;
-	char *token, *pathValue, *getcommand, *lineptr = NULL;
-	size_t i, n;
-	int status, y = 0;
+	char *pathValue, *getcommand, *lineptr = NULL;
+	size_t n;
+	int status;
 	char **allValuesPath, **user_command;
 
-	pathValue = _getenv("PATH");	      /*busca el valor de la var env PATH*/
+	pathValue = _getenv("PATH");/*busca el valor de la var env PATH*/
 	allValuesPath = _get_path(pathValue); /*todos los valores del PATH*/
 	while (1)
 	{
