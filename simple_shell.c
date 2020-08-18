@@ -24,6 +24,8 @@ char *argv[] __attribute__((unused)), char *envp[])
 		if (getline(&lineptr, &n, stdin) == EOF)
 			break;
 		user_command = _get_token(lineptr);
+		if (strcmp(user_command[0], "exit") == 0)
+			exit_command(user_command);
 		if (stat(user_command[0], &st) == 0)
 			getcommand = user_command[0];
 		else
@@ -36,10 +38,8 @@ char *argv[] __attribute__((unused)), char *envp[])
 		if (child == 0)
 		{
 			if (execve(getcommand, user_command, envp))
-			{
 				perror("./simple_shell");
 				exit(EXIT_FAILURE);
-			}
 		}
 		else
 			wait(&status);
