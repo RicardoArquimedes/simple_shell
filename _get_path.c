@@ -10,7 +10,7 @@ char **_get_path(char *path)
 	char *symbol = ":";
 	char **path_absol = malloc(size);
 	char *path_rela;
-	char *copyPath = malloc(_strlen(path));
+	char *copyPath = malloc(_strlen(path) + 1);
 
 	copyPath = strcpy(copyPath, path);
 
