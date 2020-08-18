@@ -1,24 +1,25 @@
 #include "shell.h"
 /**
- * _getenv - function to get the PATH env
- * @name: enviroment
- * Return:  the PATH in a string.
+ * _getenv - function to get all env
+ * @name: name enviroment
+ * Return: the value of name.
  */
 
 char *_getenv(char *name)
 {
-	char **env, *value = NULL, *pathname = NULL;
-	int i;
+	char *value = NULL;
+	int len = _strlen(name);
+	char **env;
 
 	env = environ;
-	for (i = 0; env[i]; i++)
+	while (*env != NULL)
 	{
-		pathname = strtok(env[i], "=");
-		if (_strcmp(name, pathname) == 0)
+		if (_strncmp(*env, name, len) == 0)
 		{
-			value = strtok(NULL, env[i]);
+			value = (*env) + (len + 1);
 			break;
 		}
+		env++;
 	}
 	return (value);
 }

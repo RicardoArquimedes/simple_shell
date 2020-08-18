@@ -14,8 +14,13 @@ extern char **environ;
 
 char *_getenv(char *name);
 int _strcmp(char *s1, char *s2);
-unsigned int _strlen(const char *s);
+int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
-char **get_path(char *path);
+char **_get_path(char *path);
+char *_get_command(char **allValuesPath, char *user_command);
+char **_get_token(char *lineptr);
+int _putchar(char c);
+int _strncmp(const char *s1, const char *s2, size_t n);
+char *_strcat(char *dest, char *src);
 
 #endif /* SHELL_H */

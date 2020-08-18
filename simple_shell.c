@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * main - main arguments functions
  * @argc: argumnents
@@ -7,30 +6,36 @@
  * @envp: environment
  * Return: Always Success 0
  */
-
-int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)), char *envp[])
+int main(int argc __attribute__((unused)),
+char *argv[] __attribute__((unused)), char *envp[])
 {
+	struct stat st;
 	pid_t child;
-	char *user_command[10], *token, *lineptr = NULL;
-	size_t i, n;
+	char *pathValue, *getcommand, *lineptr = NULL;
+	size_t n;
 	int status;
+	char **allValuesPath, **user_command;
 
+	pathValue = _getenv("PATH");/*busca el valor de la var env PATH*/
+	allValuesPath = _get_path(pathValue); /*todos los valores del PATH*/
 	while (1)
 	{
-		printf("#cisfun$ ");
-		if (getline(&lineptr, &n, stdin) == -1)
+		write(STDOUT_FILENO, "#cisfun$ ", 10);
+		if (getline(&lineptr, &n, stdin) == EOF)
 			break;
-		token = strtok(lineptr, " \t\n\r");
-		for (i = 0; i < 10 && token != NULL; i++)
+		user_command = _get_token(lineptr);
+		if (stat(user_command[0], &st) == 0)
+			getcommand = user_command[0];
+		else
 		{
-			user_command[i] = token;
-			token = strtok(NULL, " \t\n\r");
+			getcommand = _get_command(allValuesPath, user_command[0]);
+			if (getcommand == NULL)
+				perror("Command not found"); /*liberar memoria pendiente de revisar*/
 		}
-		user_command[i] = NULL;
 		child = fork();
 		if (child == 0)
 		{
-			if (execve(user_command[0], user_command, envp))
+			if (execve(getcommand, user_command, envp))
 			{
 				perror("./simple_shell");
 				exit(EXIT_FAILURE);
@@ -39,6 +44,7 @@ int main(int argc __attribute__((unused)), char *argv[] __attribute__((unused)),
 		else
 			wait(&status);
 	}
+	free(allValuesPath);
 	putchar('\n');
 	free(lineptr);
 	exit(status);
