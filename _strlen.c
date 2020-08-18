@@ -1,10 +1,8 @@
 #include "shell.h"
 
 /**
- * _strcpy - copies the string pointed to by src into dest
- * @dest: destination of the copy
- * @src: source of the copy
- *
+ * _strlen - copies the string pointed to by src into dest
+ * @s: A pointer
  * Return: char pointer to dest
  */
 
