@@ -9,14 +9,13 @@
  */
 int _strcmp(char *s1, char *s2)
 {
-	while (*s1 == *s2)
+
+	int str1, str2;
+
+	if (s1[str1] < s2[str2])
 	{
-		if (*s1 == '\0')
-		{
-			return (0);
-		}
-		s1++;
-		s2++;
+		_putchar (s2[str2]);
 	}
-	return (*s1 - *s2);
+	_putchar('\n');
+	return (0);
 }
