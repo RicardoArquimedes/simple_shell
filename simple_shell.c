@@ -1,45 +1,50 @@
 #include "shell.h"
 /**
  * main - main arguments functions
- * @argc: argumnents
- * @argv: arguments
- * @envp: environment
- * Return: Always Success 0
+ * @ac:count of argumnents
+ * @av: arguments
+ * @env: environment
+ * Return: _exit = 0.
  */
-int main(int argc __attribute__((unused)),
-	 char *argv[] __attribute__((unused)), char *envp[])
+int main(int ac, char **av, char **env)
 {
-	struct stat st;
-	char *pathValue, *getcommand, *lineptr = NULL;
-	size_t n;
-	char **allValuesPath, **user_command;
-	int get = 0;
+	char *getcommand = NULL, **user_command = NULL;
+	int pathValue = 0, _exit = 0, n = 0;
+	(void)ac;
 
-	pathValue = _getenv("PATH");	      /*busca el valor de la var env PATH*/
-	allValuesPath = _get_path(pathValue); /*todos los valores del PATH*/
 	while (1)
 	{
-		write(STDOUT_FILENO, "#cisfun$ ", 10);
-		get = getline(&lineptr, &n, stdin);
-		if (get == EOF)
-			break;
-		user_command = _get_token(lineptr);
-		if (strcmp(user_command[0], "exit") == 0)
-			exit_command(user_command);
-		if (stat(user_command[0], &st) == 0)
-			getcommand = user_command[0];
-		else
+		getcommand = _getline_command();
+		if (getcommand)
 		{
-			getcommand = _get_command(allValuesPath, user_command[0]);
-			if (getcommand == NULL)
+			pathValue++;
+			user_command = _get_token(getcommand);
+			if (!user_command)
 			{
 				free(getcommand);
-				perror("Command not found"); /*liberar memoria pendiente de revisar*/
+				perror("Command not found");
+				continue;
 			}
+			if (!_strcmp(user_command[0], "exit"))
+				_exit_command(user_command, getcommand, _exit);
+			if (!_strcmp(user_command[0], "env"))
+				_getenv(env);
+			else
+			{
+				n = _values_path(&user_command[0], env);
+				_exit = _fork_function(user_command, av, env, getcommand, pathValue, n);
+				if (n == 0)
+					free(user_command[0]);
+			}
+			free(user_command);
 		}
-		_fork_function(getcommand, user_command, envp);
+		else
+		{
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			exit(_exit);
+		}
+		free(getcommand);
 	}
-	free(allValuesPath);
-	putchar('\n');
-	return (0);
+	return (_exit);
 }

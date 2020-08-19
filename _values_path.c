@@ -1,7 +1,8 @@
 #include "shell.h"
 /**
  * _values_path - separate the path in new strings.
- * @path: absolute and relative of directories
+ * @arg: command input of user.
+ * @env: enviroment.
  * Return:  a pointer to strings.
  */
 int _values_path(char **arg, char **env)
@@ -12,7 +13,7 @@ int _values_path(char **arg, char **env)
 
 	if (stat(*arg, &stat_lineptr) == 0)
 		return (-1);
-	path_rela = _get_command(env);
+	path_rela = _get_path(env);
 	if (!path_rela)
 		return (-1);
 	token = strtok(path_rela, ":");

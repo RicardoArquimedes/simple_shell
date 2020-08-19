@@ -7,9 +7,10 @@
 
 char **_get_token(char *lineptr)
 {
-	char **user_command= NULL;
+	char **user_command = NULL;
 	char *token = NULL;
-	size_t size= 0, i = 0;
+	size_t i = 0;
+	int size = 0;
 
 	if (lineptr == NULL)
 		return (NULL);
