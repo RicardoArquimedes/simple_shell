@@ -32,7 +32,10 @@ char *argv[] __attribute__((unused)), char *envp[])
 		{
 			getcommand = _get_command(allValuesPath, user_command[0]);
 			if (getcommand == NULL)
+			{
+				free(getcommand);
 				perror("Command not found"); /*liberar memoria pendiente de revisar*/
+			}
 		}
 		child = fork();
 		if (child == 0)
@@ -46,6 +49,5 @@ char *argv[] __attribute__((unused)), char *envp[])
 	}
 	free(allValuesPath);
 	putchar('\n');
-	free(lineptr);
 	exit(status);
 }
