@@ -25,6 +25,6 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strcat(char *dest, char *src);
 void exit_command(char **args);
 int _atoi(char *s);
-
+void _fork_function(char *getcommand, char **user_command, char *envp[]);
 
 #endif /* SHELL_H */
