@@ -7,16 +7,14 @@
  * Return: Always Success 0
  */
 int main(int argc __attribute__((unused)),
-char *argv[] __attribute__((unused)), char *envp[])
+	 char *argv[] __attribute__((unused)), char *envp[])
 {
 	struct stat st;
-	pid_t child;
 	char *pathValue, *getcommand, *lineptr = NULL;
 	size_t n;
-	int status;
 	char **allValuesPath, **user_command;
 
-	pathValue = _getenv("PATH");/*busca el valor de la var env PATH*/
+	pathValue = _getenv("PATH");	      /*busca el valor de la var env PATH*/
 	allValuesPath = _get_path(pathValue); /*todos los valores del PATH*/
 	while (1)
 	{
@@ -37,17 +35,9 @@ char *argv[] __attribute__((unused)), char *envp[])
 				perror("Command not found"); /*liberar memoria pendiente de revisar*/
 			}
 		}
-		child = fork();
-		if (child == 0)
-		{
-			if (execve(getcommand, user_command, envp))
-				perror("./simple_shell");
-				exit(EXIT_FAILURE);
-		}
-		else
-			wait(&status);
+		_fork_function(getcommand, user_command, envp);
 	}
 	free(allValuesPath);
 	putchar('\n');
-	exit(status);
+	return (0);
 }

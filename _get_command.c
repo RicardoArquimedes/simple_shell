@@ -1,4 +1,40 @@
 #include "shell.h"
+
+/**
+ * fillAllvaluesPath - fill values of path  of user.
+ * @copyAllvaluesPath: value paths
+ * @allValuesPath: comman user
+ * @user_command: userCommand
+ * Return: To a pointers
+ */
+char *fillAllvaluesPath(char **copyAllvaluesPath, char **allValuesPath,
+			char *user_command)
+{
+	struct stat st;
+	char *getcommand = NULL;
+	int value = 0, len = 0;
+
+	while (copyAllvaluesPath[value] != NULL)
+	{
+		len = _strlen(allValuesPath[value] + 1);
+		if (allValuesPath[value][len - 1] != 47)
+		{
+			copyAllvaluesPath[value] = strcat(copyAllvaluesPath[value], "/");
+		}
+		getcommand = strcat(copyAllvaluesPath[value], user_command);
+		if (stat(getcommand, &st) == 0)
+		{
+			free(copyAllvaluesPath);
+			return (getcommand);
+		}
+		free(getcommand);
+		getcommand = NULL;
+		value++;
+	}
+
+	return (getcommand);
+}
+
 /**
  * _get_command - get coomand of user.
  * @allValuesPath: value paths
@@ -7,8 +43,7 @@
  */
 char *_get_command(char **allValuesPath, char *user_command)
 {
-	struct stat st;
-	int value = 0, len = 0;
+	int value = 0;
 	char *getcommand = NULL;
 	char **copyAllvaluesPath = malloc((sizeof(char *) * 100));
 
@@ -30,23 +65,8 @@ char *_get_command(char **allValuesPath, char *user_command)
 		copyAllvaluesPath[value] = strcpy(copyAllvaluesPath[value], pathValue);
 		value++;
 	}
-	value = 0;
-	while (copyAllvaluesPath[value] != NULL)
-	{
-		len = _strlen(allValuesPath[value] + 1);
-		if (allValuesPath[value][len - 1] != 47)
-		{
-			copyAllvaluesPath[value] = strcat(copyAllvaluesPath[value], "/");
-		}
-		getcommand = strcat(copyAllvaluesPath[value], user_command);
-		if (stat(getcommand, &st) == 0)
-		{
-			free(copyAllvaluesPath);
-			return (getcommand);
-		}
-		free(getcommand);
-		getcommand = NULL;
-		value++;
-	}
+	getcommand = fillAllvaluesPath(copyAllvaluesPath, allValuesPath,
+				       user_command);
+
 	return (getcommand);
 }
