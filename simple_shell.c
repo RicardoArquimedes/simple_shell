@@ -13,13 +13,15 @@ int main(int argc __attribute__((unused)),
 	char *pathValue, *getcommand, *lineptr = NULL;
 	size_t n;
 	char **allValuesPath, **user_command;
+	int get = 0;
 
 	pathValue = _getenv("PATH");	      /*busca el valor de la var env PATH*/
 	allValuesPath = _get_path(pathValue); /*todos los valores del PATH*/
 	while (1)
 	{
 		write(STDOUT_FILENO, "#cisfun$ ", 10);
-		if (getline(&lineptr, &n, stdin) == EOF)
+		get = getline(&lineptr, &n, stdin);
+		if (get == EOF)
 			break;
 		user_command = _get_token(lineptr);
 		if (strcmp(user_command[0], "exit") == 0)
