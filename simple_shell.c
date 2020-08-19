@@ -15,7 +15,6 @@ int main(int argc __attribute__((unused)),
 	char **allValuesPath, **user_command;
 	int get = 0;
 
-
 	pathValue = _getenv("PATH");	      /*busca el valor de la var env PATH*/
 	allValuesPath = _get_path(pathValue); /*todos los valores del PATH*/
 	while (1)
