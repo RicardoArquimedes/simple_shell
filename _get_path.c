@@ -1,35 +1,33 @@
 #include "shell.h"
 /**
- * _get_path - separate the path in new strings.
- * @path: absolute and relative of directories
- * Return:  a pointer to strings.
+ * _get_path - get variable PATH.
+ * @env: enviromente local
+ * Return: value of PATH.
  */
-char **_get_path(char *path)
+
+char *_get_path(char **env)
 {
-	int index = 0, size = 100;
-	char *symbol = ":";
-	char *path_rela;
+	size_t index, var, count = 0;
+	char *path = NULL;
 
-	char **path_absol = malloc((sizeof(char *) * size));
-	char *copyPath = malloc((sizeof(char) * 300));
-
-	if (copyPath == NULL || path_absol == NULL)
-	{
-		free(path_absol);
-		free(copyPath);
-		exit(EXIT_FAILURE);
-	}
-
-	copyPath = strcpy(copyPath, path);
-
-	path_rela = strtok(copyPath, symbol);
-	while (path_rela)
-	{
-		path_absol[index] = path_rela;
+	index = 0;
+	while (_strncmp(env[index], "PATH=", 5))
 		index++;
-		path_rela = strtok(NULL, symbol);
-	}
-	path_absol[index] = NULL;
-	free(copyPath);
-	return (path_absol);
+
+	if (env[index] == NULL)
+		return (NULL);
+
+	var = 5;
+	while (env[index][var])
+		var++, count++;
+
+	path = malloc(sizeof(char) * (count + 1));
+	if (path == NULL)
+		return (NULL);
+
+	for (var = 5, count = 0; env[index][var]; var++, count++)
+		path[count] = env[index][var];
+
+	path[count] = '\0';
+	return (path);
 }

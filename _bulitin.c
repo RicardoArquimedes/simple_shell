@@ -1,12 +1,13 @@
 #include "shell.h"
-
 /**
- * exit_command - this function closes the prompt when the exit cmd is passed
- * @args: Pointer with the direction to free  the allocated memory for
- * the  arguments passed to the program.
+ * _exit_command - this function closes the simple_shell when
+ * the command user is exit.
+ * @arg: pointer with the direction argument.
+ * @lineptr: standar input string
+ * @_exit: value of exit
  * Return: None
  */
-void exit_command(char **args, char *lineptr, int _exit)
+void _exit_command(char **arg, char *lineptr, int _exit)
 {
 	int exit_status = 0;
 
@@ -23,12 +24,12 @@ void exit_command(char **args, char *lineptr, int _exit)
 }
 
 /**
- *print_env - Built-in to enviroment
- *@env: Enviroment
+ *_getenv - function to get all env
+ *@env: enviroment
  *Return: 0
  */
 
-void _getenv(char *env)
+void _getenv(char **env)
 {
 	size_t run = 0;
 
