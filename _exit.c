@@ -6,29 +6,36 @@
  * the  arguments passed to the program.
  * Return: None
  */
-void exit_command(char **args)
+void exit_command(char **args, char *lineptr, int _exit)
 {
-	int exit_status = 0, len1 = 0, len2 = 0;
+	int exit_status = 0;
 
-	if (args[1] == NULL)
+	if (!arg[1])
 	{
-		free(*args);
-		exit(EXIT_SUCCESS);
+		free(lineptr);
+		free(arg);
+		exit(_exit);
 	}
+	exit_status = _atoi(arg[1]);
+	free(lineptr);
+	free(arg);
+	exit(exit_status);
+}
 
-	exit_status = _atoi(args[1]);
-	if (exit_status == -1)
+/**
+ *print_env - Built-in to enviroment
+ *@env: Enviroment
+ *Return: 0
+ */
+
+void _getenv(char *env)
+{
+	size_t run = 0;
+
+	while (env[run])
 	{
-		len1 = _strlen(program_invocation_name);
-		len2 = _strlen(": 1: exit: Illegal number: ");
-		write(STDERR_FILENO, program_invocation_name, len1);
-		write(STDERR_FILENO, ": 1: exit: Illegal number: ", len2);
-		write(STDERR_FILENO, args[1], _strlen(args[1]));
-		write(STDERR_FILENO, "\n", 1);
-	}
-	else
-	{
-		free(*args);
-		exit(exit_status);
+		write(STDOUT_FILENO, env[run], _strlen(env[run]));
+		write(STDOUT_FILENO, "\n", 1);
+		run++;
 	}
 }

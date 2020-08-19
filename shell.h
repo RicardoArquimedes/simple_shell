@@ -14,18 +14,18 @@
 extern char **environ;
 extern char *program_invocation_name;
 
-char *_getenv(char *name);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
 int _values_path(char **arg, char **env);
 char *_get_command(char **allValuesPath, char *user_command);
+void _getenv(char *env);
 char **_get_token(char *lineptr);
 int _putchar(char c);
-int _strncmp(const char *s1, const char *s2, size_t n);
+size_t _strncmp(char *s1, char *s2, size_t n);
 char *_strcat(char *dest, char *src);
-void exit_command(char **args);
+void exit_command(char **args, char *lineptr, int _exit);
 int _atoi(char *s);
-void _fork_function(char *getcommand, char **user_command, char *envp[]);
+int _fork_function(char **arg, char **av, char **env, char *lineptr, int np, int c);
 
 #endif /* SHELL_H */
