@@ -12,7 +12,7 @@ char *_getline_command(void)
 	if (isatty(STDIN_FILENO))
 		write(STDOUT_FILENO, "#cisfun$ ", 10);
 
-	if (getline(&lineptr, &charter_user, stdin) == EOF)
+	if (getline(&lineptr, &charter_user, stdin) == 1)
 	{
 		free(lineptr);
 		return (NULL);
