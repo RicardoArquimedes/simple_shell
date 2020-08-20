@@ -123,7 +123,7 @@ $
 
 ## [Flowchart]()
 
-## Authors :dancers:
+## Authors
 
 * **Jocelyn Vega** | [Twitter](https://twitter.com/jossvega103) | [Github](https://github.com/jossvega) |
 * **Ricardo Arquímedes Castro** | [Twitter](https://twitter.com/richardcqt) | [Github](https://github.com/RicardoArquimedes) |
