@@ -22,7 +22,6 @@ int main(int ac, char **av, char **env)
 			if (!user_command)
 			{
 				free(getcommand);
-				perror("Command not found");
 				continue;
 			}
 			if (!_strcmp(user_command[0], "exit"))
