@@ -57,7 +57,7 @@ Environment variables affect the execution of
      ENV	Initialization file for interactive shells.
 
 .SH EXIT STATUS
-Errors that are detected by the shell, such as a syntax error, will cause the shell to exit with a non-zero exit status. If the shell is not an interactive shell, the execution of the shell file will be aborted. Otherwise the shell will return the exit status of the last command executed, or if the 
+Errors that are detected by the shell, such as a syntax error, will cause the shell to exit with a non-zero exit status. If the shell is not an interactive shell, the execution of the shell file will be aborted. Otherwise the shell will return the exit status of the last command executed, or if the
 .B exit
 builtin is used with a numeric argument, it will return the argument.
 

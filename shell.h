@@ -23,6 +23,7 @@ char *_getline_command(void);
 void _getenv(char **env);
 char **_get_token(char *lineptr);
 void _exit_command(char **args, char *lineptr, int _exit);
-int _fork_function(char **arg, char **av, char **env, char *lineptr, int np, int c);
+int _fork_function(char **arg, char **av, char **env,
+char *lineptr, int np, int c);
 
 #endif /* SHELL_H */
