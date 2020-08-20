@@ -22,12 +22,10 @@ In this project we'll create a simple UNIX command interpreter in C programming 
     * Compilation
     * Testing
     * Files
-    * Show flowchart
+    * Flowchart
 * [Extra Information](#Extra-Information)
     * Resources
 * [Authors](#Authors)
-
-
 
 ## Introduction
 
@@ -36,8 +34,6 @@ A **shell** is a command-line interpreter, it is the computer program that provi
 
 ### What is it for
 This consists of interpreting orders. It incorporates features such as process control, input/output redirection, law listing and reading, protection, communications, and a command language for writing batch programs or scripts. All Unix-type systems have at least one interpreter compatible with the Bourne shell. The Bourne shell program is found within the Unix file hierarchy at **`/bin/sh`**.
-
-
 
 ## Project Information
 
@@ -62,7 +58,7 @@ This consists of interpreting orders. It incorporates features such as process c
  * This shell should not have any memory leaks
  * Unless specified otherwise, your program must have the exact same output as `sh` (`/bin/sh`) as well as the exact same error output.
 
-### Allowed functions
+### Allowed functions used 
 
 * `execve` (man 2 execve)
 * `exit` (man 3 exit)
@@ -98,3 +94,36 @@ hsh main.c shell.c
 ($) exit
 $
 ```
+But also in non-interactive mode:
+
+```
+$ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+$
+```
+### Files
+
+##|File|Description
+---|---|---
+|[_builtin.c](https://github.com/RicardoArquimedes/simple_shell/blob/master/_bulitin.c)|Built-ins functions exit and print env|
+|[_fork_function.c](https://github.com/RicardoArquimedes/simple_shell/blob/master/_fork_function.c)|Create the fork function to execute the command types by the user|
+|[_get_token.c](https://github.com/RicardoArquimedes/simple_shell/blob/master/_get_token.c)|Tokenize the strings|
+|[_get_path.c](https://github.com/RicardoArquimedes/simple_shell/blob/master/_get_path.c)|Get the env to find the PATH|
+|[_getline_command.c](https://github.com/RicardoArquimedes/simple_shell/blob/master/_getline_command.c)|Print the $ and get what the user types|
+|[shell.h](https://github.com/RicardoArquimedes/simple_shell/blob/master/shell.h)|Prototypes functions and headers|
+|[simple_shell.c](https://github.com/RicardoArquimedes/simple_shell/blob/master/simple_shell.c)|Our simple shell functions|
+|[_str_utils.c](https://github.com/RicardoArquimedes/simple_shell/blob/master/_str_utils.c)|Auxiliar strings functions|
+|[_values_path.c](https://github.com/RicardoArquimedes/simple_shell/blob/master/_values_path.c)|Concatenate the path with the command|
+|[AUTHORS](https://github.com/RicardoArquimedes/simple_shell/blob/master/AUTHORS)|Contributors in this repository|
+|[man_1_simpleShell](https://github.com/RicardoArquimedes/simple_shell/blob/master/man_1_simpleShell)|Manual page our of Simple Shell|
+|[README.md](https://github.com/RicardoArquimedes/simple_shell/blob/master/README.md)|Information about our repository|
+
+## [Flowchart]()
+
+## Authors :dancers:
+
+* **Jocelyn Vega** | [Twitter](https://twitter.com/jossvega103) | [Github](https://github.com/jossvega) |
+* **Ricardo Arquímedes Castro** | [Twitter](https://twitter.com/richardcqt) | [Github](https://github.com/RicardoArquimedes) |
