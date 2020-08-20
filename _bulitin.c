@@ -1,7 +1,6 @@
 #include "shell.h"
 /**
  * _exit_command - this function closes the simple_shell when
- * the command user is exit.
  * @arg: pointer with the direction argument.
  * @lineptr: standar input string
  * @_exit: value of exit
