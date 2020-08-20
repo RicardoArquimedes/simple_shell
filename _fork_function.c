@@ -15,7 +15,7 @@ int _fork_function(char **arg, char **av, char **env,
 {
 	pid_t child;
 	int status;
-	char *format = "%s: %d: %f: %i: not found\n";
+	char *format = "%s: %d: %s: not found\n";
 
 	child = fork();
 
