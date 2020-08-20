@@ -97,5 +97,8 @@ It was a simple command interpreter, not designed for scripting, but nonetheless
 .SH BUGS
 No known bugs until now.
 
+.SH CREDITS 
+This man page is created for academic purpose, to make our Simple Shell project by Jocelyn Vega and Ricardo Arquímedes Castro, Holberton School Students.
+
 .SH AUTHORS
 Jocelyn Vega & Ricardo Arquímedes Castro
