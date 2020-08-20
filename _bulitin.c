@@ -16,7 +16,7 @@ void _exit_command(char **arg, char *lineptr, int _exit)
 		free(arg);
 		exit(_exit);
 	}
-	exit_status = _atoi(arg[1]);
+	exit_status = atoi(arg[1]);
 	free(lineptr);
 	free(arg);
 	exit(exit_status);
