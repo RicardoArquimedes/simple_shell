@@ -23,7 +23,6 @@ int _fork_function(char **arg, char **av, char **env,
 	{
 		if (execve(arg[0], arg, env) == -1)
 		{
-			perror("./hsh");
 			fprintf(stderr, format, av[0], np, arg[0]);
 			if (!c)
 				free(arg[0]);
