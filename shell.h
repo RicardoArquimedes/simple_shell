@@ -13,7 +13,6 @@
 
 extern char **environ;
 
-int _strcmp(char *s1, char *s2);
 size_t _strncmp(char *s1, char *s2, size_t n);
 int _strlen(char *s);
 char *_strcpy(char *dest, char *src);
