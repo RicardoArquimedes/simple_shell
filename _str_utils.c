@@ -9,7 +9,8 @@
 
 char *_strcat(char *dest, char *src)
 {
-	int d = 0, s = 0;
+	int d = 0;
+	int s = 0;
 
 	while (dest[d] != '\0')
 	{
@@ -17,12 +18,13 @@ char *_strcat(char *dest, char *src)
 	}
 	while (src[s] != '\0')
 	{
-		dest[d + s] = src[s];
+		dest[d] = src[s];
+		d++;
 		s++;
 	}
+	dest[d] = '\0';
 	return (dest);
 }
-
 /**
  * _strcmp - compare the values of a string
  * @s1: character
