@@ -121,7 +121,8 @@ $
 |[man_1_simpleShell](https://github.com/RicardoArquimedes/simple_shell/blob/master/man_1_simpleShell)|Manual page our of Simple Shell|
 |[README.md](https://github.com/RicardoArquimedes/simple_shell/blob/master/README.md)|Information about our repository|
 
-## [Flowchart]()
+## [Flowchart]
+(https://github.com/RicardoArquimedes/testingREADME/blob/master/Flowchart.jpg)
 
 ## Authors
 
