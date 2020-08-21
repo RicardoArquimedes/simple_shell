@@ -122,7 +122,10 @@ $
 |[README.md](https://github.com/RicardoArquimedes/simple_shell/blob/master/README.md)|Information about our repository|
 
 ## [Flowchart]
-(https://github.com/RicardoArquimedes/testingREADME/blob/master/Flowchart.jpg)
+<p align="center">
+     <p align="center">
+          <img src="https://github.com/RicardoArquimedes/testingREADME/blob/master/Flowchart.jpg?raw=true width="360"/>
+     </p>
 
 ## Authors
 
