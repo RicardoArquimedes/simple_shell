@@ -1,16 +1,16 @@
 #include "shell.h"
 /**
  * _fork_fun - function that create a fork
- *@arg: command and values path
+ *@user_command: command and values path
  *@av: Has the name of our program
  *@env: environment
- *@lineptr: command line for the user
- *@np: id of proces
- *@c: Checker add new test
+ *@getcommand: command line for the user
+ *@pathValue: id of proces
+ *@n: Checker add new test
  *Return: 0 success
  */
 
-int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
+int _fork_fun(char **user_command, char **av, char **env, char *getcommand, int pathValue, int n)
 {
 	pid_t child;
 	int status;
@@ -20,13 +20,13 @@ int _fork_fun(char **arg, char **av, char **env, char *lineptr, int np, int c)
 
 	if (child == 0)
 	{
-		if (execve(arg[0], arg, env) == -1)
+		if (execve(user_command[0], user_command, env) == -1)
 		{
-			fprintf(stderr, format, av[0], np, arg[0]);
-			if (!c)
-				free(arg[0]);
-			free(arg);
-			free(lineptr);
+			fprintf(stderr, format, av[0], pathValue, user_command[0]);
+			if (!n)
+				free(user_command[0]);
+			free(user_command);
+			free(getcommand);
 			exit(errno);
 		}
 	}
