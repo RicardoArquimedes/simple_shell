@@ -12,6 +12,7 @@ int main(int ac, char **av, char **env)
 	int pathValue = 0, _exit = 0, n = 0;
 	(void)ac;
 
+	signal(SIGINT, ctrl_c);
 	while (1)
 	{
 		getcommand = _getline_command();
