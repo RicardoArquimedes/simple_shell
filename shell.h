@@ -28,8 +28,7 @@ char **_get_token(char *lineptr);
 void _exit_command(char **args, char *lineptr, int _exit);
 int _fork_fun(char **arg, char **av, char **env,
 char *lineptr, int np, int c);
-void ctrl_c(int signal);
 char *_strtok(char *str, const char *delim);
-char *_strchr(const char *s, int c);
+
 
 #endif /* SHELL_H */
