@@ -25,7 +25,7 @@ int main(int ac, char **av, char **env)
 				free(getcommand);
 				continue;
 			}
-			if (!_strcmp(user_command[0], "exit"))
+			if ((!_strcmp(user_command[0], "exit")) && user_command[1] == NULL)
 				_exit_command(user_command, getcommand, _exit);
 			if (!_strcmp(user_command[0], "env"))
 				_getenv(env);
