@@ -1,6 +1,6 @@
 
 <p align="center">
-        <img src="https://github.com/RicardoArquimedes/testingREADME/blob/master/simple_Shell.png?raw=true" width="280"/>
+        <img src="https://github.com/RicardoArquimedes/testingREADME/blob/master/simple_Shell.png?raw=true" width="480"/>
         </p>
 <p align="center">
      <p align="center">
