@@ -1,12 +1,13 @@
 
 <p align="center">
-      <p align="center">
-        <img src="https://github.com/RicardoArquimedes/testingREADME/blob/master/simple_Shell.png?raw=true"/>
-        </p>
-<p align="center">
      <p align="center">
           <img src="https://www.holbertonschool.com/holberton-logo.png" width="360"/>
      </p>
+
+<p align="left">
+        <img src="https://github.com/RicardoArquimedes/testingREADME/blob/master/simple_Shell.png?raw=true"/>
+        </p>
+
 
 # 0x16. C - Simple shell
 In this project we'll create a simple UNIX command interpreter in C programming language.
