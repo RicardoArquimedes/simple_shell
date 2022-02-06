@@ -1,7 +1,7 @@
 
 <p align="center">
      <p align="center">
-          <img src="https://www.holbertonschool.com/holberton-logo.png" width="360"/>
+          <img src="https://nullsector.co/wp-content/uploads/2017/12/Bash-new.sh_.png" width="360"/>
      </p>
      <p align="center">
           <a href="https://github.com/ellerbrock/open-source-badges/">
